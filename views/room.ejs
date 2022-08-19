@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoom Clone</title>
+    <script src="script.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/31bfaea391.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      //   console.log("<%= roomId %>");
+      const ROOM_ID = "<%= roomId %>";
+    </script>
+  </head>
+  <body>
+    <!-- Let's build this. -->
+    <!-- <h6><%= roomId %></h6> -->
+
+    <div class="main">
+      <div class="main__left">
+        <div class="main__videos">
+          <div id="video-grid"></div>
+        </div>
+        <div class="main__controls">
+          <div class="main__controls__block">
+            <div
+              onclick="muteUnmute()"
+              class="main__controls_button main__mute__button"
+            >
+              <i class="fa-solid fa-microphone"></i>
+              <span>Mute</span>
+            </div>
+            <div
+              onclick="playStop()"
+              class="main__controls_button main__video__button"
+            >
+              <i class="fa-solid fa-video"></i>
+              <span>Stop Video</span>
+            </div>
+          </div>
+          <div class="main__controls__block">
+            <div class="main__controls_button">
+              <i class="fas fa-shield-alt"></i>
+              <span>Security</span>
+            </div>
+            <div class="main__controls_button">
+              <i class="fa-solid fa-user-friends"></i>
+              <span>Participants</span>
+            </div>
+            <div class="main__controls_button">
+              <i class="fa-solid fa-comment-alt"></i>
+              <span>Chat</span>
+            </div>
+          </div>
+          <div class="main__controls__block">
+            <div class="main__controls_button">
+              <span class="leave_meeting">Leave Meeting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main__right">
+        <div class="main__header">
+          <h6>Chat</h6>
+        </div>
+        <div class="main__chat__window">
+          <ul class="messages"></ul>
+        </div>
+        <div class="main__message__container">
+          <input
+            type="text"
+            id="chat_message"
+            placeholder="Type message here..."
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
